@@ -1,10 +1,17 @@
 <template>
-  <div class="product-image"></div>
+  <div class="product-image">
+    <img :src="image" />
+  </div>
 </template>
 
 <script>
 export default {
-  name: "ProductImage"
+  name: "ProductImage",
+  data() {
+    return {
+      image: require("@/assets/green.png")
+    };
+  }
 };
 </script>
 

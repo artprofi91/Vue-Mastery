@@ -1,19 +1,20 @@
 <template>
   <div id="app">
-    <div class="nav-bar"></div>
+    <NavBar />
     <Product />
   </div>
 </template>
 
 <script>
+import NavBar from "./components/nav-bar/navBar.vue";
 import Product from "./components/product/product.vue";
 
 export default {
   name: "app",
-  components: {
-    Product
-  }
+  components: { NavBar, Product }
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+@import "./sass/style";
+</style>
