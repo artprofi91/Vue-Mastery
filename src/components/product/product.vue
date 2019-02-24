@@ -1,7 +1,10 @@
 <template>
   <div class="product">
     <ProductImage :imagePath="[imagePath]"></ProductImage>
-    <ProductInfo @colorHover="onColorHover"></ProductInfo>
+    <ProductInfo
+      @colorHover="onColorHover"
+      @addToCart="onAddToCart"
+    ></ProductInfo>
   </div>
 </template>
 
@@ -20,6 +23,9 @@ export default {
   methods: {
     onColorHover(imagePath) {
       this.imagePath = imagePath;
+    },
+    onAddToCart(event) {
+      this.$emit("addToCart", event);
     }
   }
 };

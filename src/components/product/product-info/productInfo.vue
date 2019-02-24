@@ -28,9 +28,6 @@
     >
       Add to Cart
     </button>
-    <div class="cart">
-      <p>Cart({{ cart }})</p>
-    </div>
   </div>
 </template>
 
@@ -75,6 +72,7 @@ export default {
   methods: {
     addToCart: function() {
       this.cart += 1;
+      this.$emit("addToCart", this.cart);
     },
     updateProduct(index) {
       this.selectedVariant = index;
