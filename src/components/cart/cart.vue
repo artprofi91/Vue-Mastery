@@ -1,6 +1,6 @@
 <template>
   <div class="cart">
-    <p>Cart({{ cart }})</p>
+    <p>Cart({{ cart.length }})</p>
   </div>
 </template>
 

@@ -16,12 +16,12 @@ export default {
   components: { NavBar, Cart, Product },
   data() {
     return {
-      cart: 0
+      cart: []
     };
   },
   methods: {
     onAddToCart(event) {
-      this.cart = event;
+      this.cart.push(event);
     }
   }
 };

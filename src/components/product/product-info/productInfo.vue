@@ -1,9 +1,7 @@
 <template>
   <div class="product-info">
     <h2>{{ title }}</h2>
-    <p v-if="inStock">
-      In Stock
-    </p>
+    <p v-if="inStock">In Stock</p>
     <p v-if="!inStock" :style="{ 'text-decoration': 'line-through' }">
       Out of Stock
     </p>
@@ -65,14 +63,12 @@ export default {
         { size: "L", id: 12 },
         { size: "XL", id: 13 },
         { size: "XXL", id: 14 }
-      ],
-      cart: 0
+      ]
     };
   },
   methods: {
     addToCart: function() {
-      this.cart += 1;
-      this.$emit("addToCart", this.cart);
+      this.$emit("addToCart", this.variants[this.selectedVariant].variantId);
     },
     updateProduct(index) {
       this.selectedVariant = index;
