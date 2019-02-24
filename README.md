@@ -1,4 +1,4 @@
-Vue playground with Vue Mastery
+Vue playground with Vue Mastery<br />
 Before starting the project make sure that you have vue and yarn/npm install on your machine.
 
 ```
