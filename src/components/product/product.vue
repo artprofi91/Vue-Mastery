@@ -1,22 +1,13 @@
 <template>
   <div class="product">
     <ProductImage :imagePath="[imagePath]"></ProductImage>
-    <ProductInfo
-      @colorHover="onColorHover"
-      @addToCart="onAddToCart"
-    ></ProductInfo>
-    <div>
-      <h2>Reviews</h2>
-      <p v-if="!reviews.length">There are no reviews yet.</p>
-      <ul>
-        <li v-for="(review, index) in reviews" :key="index">
-          <p>{{ review.name }}</p>
-          <p>Rating: {{ review.rating }}</p>
-          <p>{{ review.review }}</p>
-        </li>
-      </ul>
-    </div>
-    <ProductReview @reviewSubmitted="onReviewSubmitted" />
+    <ProductInfo @colorHover="onColorHover" @addToCart="onAddToCart">
+    </ProductInfo>
+    <ProductTabs @selectTab="onSelectTab" :reviews="reviews"></ProductTabs>
+    <ProductReview
+      v-show="selectedTab !== 'Reviews'"
+      @reviewSubmitted="onReviewSubmitted"
+    ></ProductReview>
   </div>
 </template>
 
@@ -24,14 +15,21 @@
 import ProductImage from "./product-image/productImage.vue";
 import ProductInfo from "./product-info/productInfo.vue";
 import ProductReview from "./product-review/productReview.vue";
+import ProductTabs from "./product-tabs/productTabs.vue";
 
 export default {
   name: "Product",
-  components: { ProductImage, ProductInfo, ProductReview },
+  components: {
+    ProductImage,
+    ProductInfo,
+    ProductReview,
+    ProductTabs
+  },
   data() {
     return {
       imagePath: require("@/assets/green.png"),
-      reviews: []
+      reviews: [],
+      selectedTab: "Reviews"
     };
   },
   methods: {
@@ -43,6 +41,9 @@ export default {
     },
     onReviewSubmitted(productReview) {
       this.reviews.push(productReview);
+    },
+    onSelectTab(event) {
+      this.selectedTab = event;
     }
   }
 };
