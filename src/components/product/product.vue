@@ -1,7 +1,7 @@
 <template>
   <div class="product">
-    <ProductImage />
-    <ProductInfo />
+    <ProductImage :imagePath="[imagePath]"></ProductImage>
+    <ProductInfo @colorHover="onColorHover"></ProductInfo>
   </div>
 </template>
 
@@ -11,7 +11,17 @@ import ProductInfo from "./product-info/productInfo.vue";
 
 export default {
   name: "Product",
-  components: { ProductImage, ProductInfo }
+  components: { ProductImage, ProductInfo },
+  data() {
+    return {
+      imagePath: require("@/assets/green.png")
+    };
+  },
+  methods: {
+    onColorHover(imagePath) {
+      this.imagePath = imagePath;
+    }
+  }
 };
 </script>
 

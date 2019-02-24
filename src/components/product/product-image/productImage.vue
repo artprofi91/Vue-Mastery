@@ -1,17 +1,13 @@
 <template>
   <div class="product-image">
-    <img :src="image" />
+    <img :src="imagePath" />
   </div>
 </template>
 
 <script>
 export default {
   name: "ProductImage",
-  data() {
-    return {
-      image: require("@/assets/green.png")
-    };
-  }
+  props: ["imagePath"]
 };
 </script>
 
